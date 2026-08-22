@@ -45,7 +45,11 @@ Once the ciphertext has been separated into groups, each group on its own can be
 
 Although the Vigenère is now trivial to crack with a computer, it was an important step in the history of cryptography. The ideas gave rise to the first truly perfect cipher, the One-Time Pad. The One Time-Pad (OTP) is basically a Vigenère Cipher with a key that is the same length as the plaintext itself. Since the key does not repeat, there are no patterns for the cryptanalyst to study–not even the small patterns found by Babbage and Kasiski.
 
-The original OTP worked only with letters using a Caesar-shift technique similar to Vigenère. Modern day OTP ciphers work on binary data and use the exclusive-or math operator (XOR). OTP with XOR, when used correctly with a one time random key that is the same length as the plaintext, is provably mathematically secure: it truly cannot be broken. However, there is a big difference between theoretical cryptography and practical in-a-war-in-a-trench cryptography.
+One-Time Pads can be demonstrated using letters and a Caesar-shift technique similar to Vigenère. But modern day OTP ciphers work on binary data and use the exclusive-or math operator (XOR). OTP with XOR, when used correctly with a one time random key that is the same length as the plaintext, is provably mathematically secure: it truly cannot be broken. However, there is a big difference between theoretical cryptography and practical in-a-war-in-a-trench cryptography.
+
+3. Convert the text `MARTY` to binary using [8-bit ASCII encoding](ascii_utf8_binary_worksheet.md).
+4. How many bits (0s and 1s) are needed to create an OTP key to encrypt `MARTY`?
+5. Encrypt `MARTY` with a key that is all ones and provide your answer as a sequence of 0s and 1s binary digits (admittedly, this is a rather unsecure key).
 
 During World War II, Soviet intelligence services used OTP to protect their communications but the American NSA was able to crack the messages. The reason that an unbreakable cipher could be broken was that wartime pressure made it difficult for the Soviets to distribute enough key material, so their agents reused old keys on new messages. This human tendency–perhaps born out of necessity–proved fatal by violating the rules required for perfect security. For more information, research the Venona Project, which was declassified in 1995. For example, see [Wikipedia](https://en.wikipedia.org/wiki/Venona_project), the [NSA Archives](https://www.nsa.gov/Helpful-Links/NSA-FOIA/Declassification-Transparency-Initiatives/Historical-Releases/Venona), and this at-first-glance accurate [YouTube documentary](https://www.youtube.com/watch?v=qvBsBomfL5g).
 
@@ -53,6 +57,6 @@ During World War II, Soviet intelligence services used OTP to protect their comm
 
 The Soviet reuse of OTP keys during World War II demonstrates that even theoretically perfect security systems can fail under operational pressure. In practice, humans often take shortcuts because of fear, urgency, exhaustion, convenience, limited resources, or competing priorities.
 
-3. Describe a real-world situation (technological or otherwise) where people knowingly violate good security or safety procedures because the process is too difficult, slow, expensive, or inconvenient. Explain why the shortcut is attractive, what risks it creates, and whether the tradeoff reflects wise and responsible living.
+6. Describe a real-world situation (technological or otherwise) where people knowingly violate good security or safety procedures because the process is too difficult, slow, expensive, or inconvenient. Explain why the shortcut is attractive, what risks it creates, and whether the tradeoff reflects wise and responsible living.
 
 Once again, assume that readers will not have access to this assignment; your writing should include enough background and introduction to stand on its own.
