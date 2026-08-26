@@ -65,7 +65,7 @@ def generate_key(password:str) -> str:
     key = ''
     # Start with each of the unique letters from the password
     for ch in password.upper():
-        if ch.isalpha and ch not in key:
+        if ch.isalpha() and ch not in key:
             key += ch
     # After the password, fill in any missing letters from the alphabet            
     for ch in string.ascii_uppercase:
