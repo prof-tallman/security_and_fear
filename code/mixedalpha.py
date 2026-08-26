@@ -131,13 +131,13 @@ def english_ngrams(n:int) -> list[tuple[str, float]]:
     else:
         raise ValueError(f"N-gram number {n} was not in valid range 1-5")
 
-def print_english_ngrams(n:int, top:int = 25):
+def print_english_ngrams(n:int, top:int = 10):
     """ Prints the expected English n-grams in a table. """
     ngrams = english_ngrams(n)
     for ngram in ngrams[:top]:
         print(f"{ngram[0]}: {ngram[1]}")
 
-def text_ngrams(text:str, n:int) -> list[tuple[str, float]]:
+def text_ngrams(text:str, n:int, top:int = 10) -> list[tuple[str, float]]:
     """
     Returns a calculation of all ngrams in the text, ignoring all spaces and
     punctuation. Results are sorted and expressed as frequencies.
@@ -162,14 +162,14 @@ def text_ngrams(text:str, n:int) -> list[tuple[str, float]]:
     table = sorted(table.items(), key=lambda x: x[1], reverse=True)
     return table
 
-def print_text_ngrams(text:str, n:int, top:int = 25) -> None:
+def print_text_ngrams(text:str, n:int, top:int = 10) -> None:
     """ Prints the calculated n-grams for a text as a table. """
     ngrams = text_ngrams(text, n)
     for ngram in ngrams[:top]:
         print(f"{ngram[0]}: {ngram[1]}")
     return None
 
-def print_ngrams_side_by_side(text:str, n:int) -> None:
+def print_ngrams_side_by_side(text:str, n:int, top:int = 10) -> None:
     """
     Prints the n-grams for a text and the expected English distributions
     side-by-side for easy comparison. The n-grams are in sorted order based
@@ -180,7 +180,7 @@ def print_ngrams_side_by_side(text:str, n:int) -> None:
     ngrams_text = text_ngrams(text, n)
     print("Text Sample     | Standard English ")
     print("--------------- | -----------------")
-    for i in range(len(ngrams_english)):
+    for i in range(len(ngrams_english[:top])):
         left_side = f"{ngrams_text[i][0]} {ngrams_text[i][1]:.3f}%"
         right_side = f"{ngrams_english[i][0]} {ngrams_english[i][1]:.3f}%"
         print(f"{left_side:<15} | {right_side:<15}")
