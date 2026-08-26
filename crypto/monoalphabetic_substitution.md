@@ -9,11 +9,11 @@ In some cases, such as the Caesar Shift Cipher and the Affine Cipher, there is a
 The mixed alphabet cipher is a monoalphabetic substitution cipher that uses an arbitrary mapping from one letter to another. For instance, the letter `A` might map to `K`, `B` to `T`, `C` to `W`, and so on. The important characteristic is that the mapping appears to be random. With this in mind, the key can no longer be numbers, but must contain the full `A-Z` mapping, like this:
 
 ```
-a b c d e f g h i j k l m n o p q r s t u v w x y z
-K T W N P C E V U F A M I X D R G Z Y L Q O J H B S
+plaintext:  a b c d e f g h i j k l m n o p q r s t u v w x y z
+CIPHERTEXT: K T W N P C E V U F A M I X D R G Z Y L Q O J H B S
 ```
 
-1. Assuming all possible random orderings, how many unique keys are possible for this cipher? Express your answer mathematically and explain your reasoning.
+1. How many unique keys are possible for this cipher? Explain your reasoning.
 
 ### Passwords ###
 
@@ -22,9 +22,11 @@ The arbitrary ordering makes the cipher stronger than Caesar Shift or Affine, bu
 A simple password trick can be used to generate mixed alphabet keys from memory. Begin by removing duplicate letters so that only the first occurrence remains. For instance, if the password was `"PASSWORD"`, the second letter `"S"` would be duplicate and must be removed to form `"PASWORD"`. This forms the beginning of the key. Finish the key by filling in the remaining alphabet letters (`B`, `C`, `E`, …). Begin with the letter following the last letter in the password, continue on in order, and wrap around from the end of the alphabet back to the beginning. In this case, the last letter of the de-duplicated password is `"D"`, so the next unused letter would be `"E"`, and the two letters remaining to wrap around at the end would be `"B"` and `"C"`, like this:
 
 ```
-a b c d e f g h i j k l m n o p q r s t u v w x y z
-P A S W O R D E F G H I J K L M N Q T U V X Y Z B C
+plaintext:  a b c d e f g h i j k l m n o p q r s t u v w x y z
+CIPHERTEXT: P A S W O R D E F G H I J K L M N Q T U V X Y Z B C
 ```
+
+2. Write out a plaintext/CIPHERTEXT encryption key for the password `MARTY`. 
 
 ## Cryptanalysis ##
 
@@ -34,7 +36,7 @@ To begin with, some letters can be reasoned out fairly quickly because they form
 
 Single letter frequencies are often not enough to crack an intercepted message. There are many letters whose frequencies are close to each other and many ciphertexts are relatively short, not necessarily following the standard letter distribution exactly. The next step is to find the most common *digrams* and *trigrams* (two and three letter sequences) and to compare these to the expected frequencies. For example, `"ING"`, `"ENT"`, `"ION"`, and `"ERS"` are all common trigrams in English. Determined individuals will almost always be able to crack these ciphertexts by hand, but computer algorithms have simplified this process considerably.
 
-And finally, cryptanalysis often depends on contextual clues, probable phrases, repeated structures, and knowledge of likely plaintexts. If you recognize patterns or suspect the source material, you may use that information as part of your analysis.
+And finally, cryptanalysis often depends on contextual clues, probable phrases, repeated structures, and knowledge of likely plaintexts. If you recognize patterns--use them!
 
 ## Modern Algorithms ##
 
@@ -42,8 +44,8 @@ Many modern cryptographic algorithms use similar key generation techniques to tu
 
 ## Reflection Question ##
 
-2. Crack the following mixed alphabet cipher by decrypting it without knowing the key. Your answer should contain:
-   - the plaintext;
+3. Use frequency analysis to crack the following mixed alphabet cipher. Include:
+   - the plaintext (you may name/describe it if that is easier);
    - the password;
    - a short explanation of your methodology; and 
    - a list of the most helpful resources such as digrams, trigrams, computer tools, etc.
