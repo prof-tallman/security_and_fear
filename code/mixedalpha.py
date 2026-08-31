@@ -67,8 +67,13 @@ def generate_key(password:str) -> str:
     for ch in password.upper():
         if ch.isalpha() and ch not in key:
             key += ch
-    # After the password, fill in any missing letters from the alphabet            
-    for ch in string.ascii_uppercase:
+    if len(key) == 0:
+        raise ValueError("Password must contain letters A-Z")
+    # After the password, fill in any missing letters from the alphabet
+    # Start with the letter immediately *after* the last password letter
+    # and, after reaching Z, wrap back around to A and continue
+    idx = (string.ascii_uppercase.index(key[-1]) + 1) % 26
+    for ch in string.ascii_uppercase[idx:] + string.ascii_uppercase[:idx]:
         if ch not in key:
             key += ch
     return key
