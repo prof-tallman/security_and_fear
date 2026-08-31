@@ -206,7 +206,7 @@ def _format_text(text:str, width:int = 40) -> list[str]:
             # Finds the last word in a line that fits the requested width
             while len(line) > 0:
                 i = min(width, len(line))
-                while i > 0 and line[i-1] != ' ':
+                while i > 0 and i < len(line) and line[i-1] != ' ':
                     i -= 1
                 # Adds a line to the output and trims it from the larger string
                 if i == 0:
