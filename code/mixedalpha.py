@@ -209,10 +209,11 @@ def _format_text(text:str, width:int = 40) -> list[str]:
                 while i > 0 and line[i-1] != ' ':
                     i -= 1
                 # Adds a line to the output and trims it from the larger string
-                output_list += [ line[:i] ]
                 if i == 0:
+                    output_list += [ line ]
                     line = ''
                 else:
+                    output_list += [ line[:i] ]
                     line = line[i:]
             # Manually add a new line to re-insert paragraph breaks
             output_list += [ '' ]
@@ -230,9 +231,9 @@ def crack_side_by_side(ciphertext:str, key:dict[str, str], width:int) -> None:
     ciphertext. Helps the cryptanalyst map solved words to the key.
     """
     # Decrypt the known key letters without modifying those that are missing.
-    plaintext = ciphertext[:]
-    for ch in key:
-        plaintext = plaintext.replace(ch, key[ch])
+    plaintext = ciphertext.upper()
+    for ct, pt in key.items():
+        plaintext = plaintext.replace(ct.upper(), pt.lower())
     # Word-wrap the two strings to display side-by-side.
     ciphertext_lines = _format_text(ciphertext, width)
     plaintext_lines = _format_text(plaintext, width)
