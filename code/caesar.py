@@ -57,7 +57,7 @@ def ordinals_to_words(input_string):
 def _caesar_rotate(letter, shift_count):
     """ Shifts a single ordinal by amount specified in the key.
     """
-    return (letter + shift_count) % 26
+    return (letter - shift_count) % 26
 
 
 def _caesar_shift_ordinals(original_ordinals, key):
@@ -99,7 +99,7 @@ def shift_alphabet(key=3):
     """
     ken_len = len(english_alphabet)
     plaintext = english_alphabet
-    ciphertext = "".join(english_alphabet[(i+key)%26] for i in range(ken_len))
+    ciphertext = "".join(english_alphabet[(i-key)%26] for i in range(ken_len))
     return [ plaintext, ciphertext.upper() ]
 
 
